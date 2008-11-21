@@ -27,7 +27,9 @@ GONNA GET THE LYRICS FOR #{playlist.tracks.length} SONGS
     if track.lyrics && track.lyrics.empty?
       puts "gonna get the lyrics for #{track.name} by #{track.artist}"
       resp = Net::HTTP.get_response(URI.parse(@url))
-      lyrics = resp.body.gsub(/\bshit\b|fuck|\bass\b|asshole|damn|\bcock\b|pussy/i, '*edit*')
+      lyrics = resp.body
+      # uncomment this line to edit your lyrics
+      # lyrics.gsub!(/\bshit\b|fuck|\bass\b|asshole|damn|\bcock\b|pussy/i, '*edit*')
       if lyrics == 'Not found'
         puts "-- didn't find them --"
         not_found += 1
